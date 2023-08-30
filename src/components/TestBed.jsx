@@ -34,6 +34,7 @@ function TestBed() {
             y: e.data.global.y,
           },
         });
+        console.log(sprite.current.style);
       }
     },
     [isDragging]
@@ -67,6 +68,8 @@ function TestBed() {
           new TextStyle({
             fill: textValues?.fontColor,
             fontSize: textValues?.fontSize || 20,
+            fontFamily: "Anime Ace",
+            align: "center",
           })
         }
       />
