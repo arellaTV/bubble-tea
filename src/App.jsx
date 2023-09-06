@@ -11,6 +11,7 @@ function App() {
         resolution: window.devicePixelRatio,
         width: window.innerWidth,
         height: window.innerHeight,
+        antialias: true,
       }}
     >
       <TestBed />

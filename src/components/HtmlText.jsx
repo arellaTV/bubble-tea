@@ -1,6 +1,10 @@
 import { PixiComponent, applyDefaultProps } from "@pixi/react";
 import { HTMLText } from "pixi.js";
 
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 const HTMLTextComponent = PixiComponent("HTMLText", {
   create: ({ text, style }) => {
     // instantiate something and return it.
@@ -9,12 +13,11 @@ const HTMLTextComponent = PixiComponent("HTMLText", {
   },
   didMount: async (instance) => {
     // apply custom logic on mount
-    console.log("mounting");
-    instance.visible = false;
+    // console.log("mounting");
     await instance.style.loadFont("./animeace2_reg.ttf", {
       family: "Anime Ace",
     });
-    instance.visible = true;
+    instance.emit("fontLoaded", instance);
   },
   willUnmount: () => {
     // clean up before removal
@@ -27,6 +30,7 @@ const HTMLTextComponent = PixiComponent("HTMLText", {
     // apply rest props to PIXI.Text
     applyDefaultProps(instance, oldP, newP);
     instance.style._fonts = fonts;
+    instance.emit("appliedProps", instance);
   },
   config: {
     // destroy instance on unmount?
