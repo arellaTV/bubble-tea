@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@pixi/filter-outline": "^5.2.0",
     "@pixi/react": "^7.1.0",
     "bezier-js": "^6.1.4",
+    "gh-pages": "^6.0.0",
     "leva": "^0.9.35",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",

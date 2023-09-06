@@ -30,7 +30,7 @@ function TestBed() {
     fontColor: "#000",
   }));
   const [bubbleValues, setBubbleValues] = useControls("Bubble", () => ({
-    position: { value: { x: 250, y: 250 }, step: 2 },
+    position: { value: { x: 550, y: 275 }, step: 2 },
     backgroundColor: "#FFF",
     borderWidth: 2,
     borderColor: "#000",
@@ -41,14 +41,14 @@ function TestBed() {
       min: 0.5,
       max: 1.5,
     },
-    heightOffset: { value: 0.75, step: 0.05, min: 0 },
+    heightOffset: { value: 0.8, step: 0.05, min: 0 },
   }));
   const [textLoaded, setTextLoaded] = useState(false);
   const [instanceWidth, setInstanceWidth] = useState(0);
 
   const [tailValues, setTailValues] = useControls("Tail", () => ({
-    position: { value: { x: 50, y: 50 }, step: 1 },
-    controlPointPosition: { value: { x: 100, y: 50 } },
+    position: { value: { x: 450, y: 250 }, step: 1 },
+    controlPointPosition: { value: { x: 500, y: 225 } },
     baseWidth: 10,
     tipWidth: 0,
   }));
@@ -132,10 +132,6 @@ function TestBed() {
     app.renderer.resize(window.innerWidth, window.innerHeight);
   }, [app]);
 
-  function delay(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
-
   useEffect(() => {
     if (textSprite.current) {
       textSprite.current.on("fontLoaded", async () => {
@@ -160,8 +156,6 @@ function TestBed() {
       const paddingBottom = bubbleValues?.paddingBottom || padding;
       const curveTightness = bubbleValues?.curveTightness;
       const color = bubbleValues?.backgroundColor;
-
-      // await delay(1000);
 
       const height = textSprite.current.height * bubbleValues?.heightOffset;
       const width = textSprite.current.width;

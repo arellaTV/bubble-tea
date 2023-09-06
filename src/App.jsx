@@ -15,6 +15,7 @@ function App() {
       }}
     >
       <TestBed />
+      <TestBed />
     </Stage>
   );
 }
