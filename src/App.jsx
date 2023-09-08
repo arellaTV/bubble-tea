@@ -1,4 +1,4 @@
-import TestBed from "./components/TestBed";
+import Bubble from "./components/Bubble";
 import { Stage } from "@pixi/react";
 
 function App() {
@@ -14,8 +14,7 @@ function App() {
         antialias: true,
       }}
     >
-      <TestBed />
-      <TestBed />
+      <Bubble />
     </Stage>
   );
 }
