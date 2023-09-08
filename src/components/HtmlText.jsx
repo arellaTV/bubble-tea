@@ -17,6 +17,12 @@ const HTMLTextComponent = PixiComponent("HTMLText", {
     await instance.style.loadFont("./animeace2_reg.ttf", {
       family: "Anime Ace",
     });
+    await instance.style.loadFont("./komika.hand.ttf", {
+      family: "Komika Hand",
+    });
+    await instance.style.loadFont("./adam-warren-pro.regular.ttf", {
+      family: "Adam Warren Pro",
+    });
     instance.emit("fontLoaded", instance);
   },
   willUnmount: () => {

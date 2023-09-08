@@ -6,9 +6,8 @@ import HtmlText from "./HtmlText";
 import { listFonts } from "../utils/fonts";
 import { Bezier } from "bezier-js";
 import debounce from "lodash.debounce";
-import { OutlineFilter } from "@pixi/filter-outline";
 
-function TestBed() {
+function Bubble() {
   const app = useApp();
   const container = useRef();
   const textSprite = useRef();
@@ -25,7 +24,7 @@ function TestBed() {
     },
     fontFamily: {
       value: "Anime Ace",
-      options: ["Arial", "Anime Ace"],
+      options: ["Adam Warren Pro", "Arial", "Anime Ace", "Komika Hand"],
     },
     fontSize: 20,
     fontColor: "#000",
@@ -44,6 +43,12 @@ function TestBed() {
     },
     heightOffset: { value: 0.8, step: 0.05, min: 0 },
   }));
+  const [secondBubbleValues, setSecondBubbleValues] = useControls(
+    "Second Bubble",
+    () => ({
+      position: { value: { x: 550, y: 275 }, step: 2 },
+    })
+  );
   const [textLoaded, setTextLoaded] = useState(false);
   const [instanceWidth, setInstanceWidth] = useState(0);
 
@@ -147,7 +152,6 @@ function TestBed() {
 
   const drawBareBubble = useCallback(
     async (g, sprite) => {
-      console.log({ g });
       if (!textLoaded) return;
       if (!sprite.current) return;
       const padding = bubbleValues?.padding;
@@ -435,21 +439,7 @@ function TestBed() {
         tailValues.baseWidth
       );
 
-      console.log({ outline });
       const color = bubbleValues?.backgroundColor;
-      // const colors = [
-      //   "red",
-      //   "orange",
-      //   "yellow",
-      //   "blue",
-      //   "green",
-      //   "purple",
-      //   "grey",
-      //   "brown",
-      //   "teal",
-      //   "black",
-      //   "red",
-      // ];
       g.clear();
       g.beginFill(color);
       g.lineStyle({
@@ -555,7 +545,6 @@ function TestBed() {
 
   useEffect(() => {
     getFonts();
-    console.log({ container: container.current });
   }, []);
 
   return (
@@ -617,7 +606,6 @@ function TestBed() {
             }
           />
         </Container>
-        <Container></Container>
         <Graphics
           draw={drawTailPoint}
           pointerdown={onDragTailStart}
@@ -639,4 +627,4 @@ function TestBed() {
   );
 }
 
-export default withPixiApp(TestBed);
+export default withPixiApp(Bubble);
